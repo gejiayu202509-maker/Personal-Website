@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大学阶段 — Ge Jiayu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500&family=Noto+Serif+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"><style>
+    /* Four Pillars Grid */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .pillar-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 0.5px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px 24px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .uni-collage {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 118px;
+      gap: 14px;
+      margin: 10px 0 52px;
+    }
+
+    .uni-photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 0.5px solid rgba(255,255,255,0.45);
+      background: var(--bg-card);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      isolation: isolate;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .uni-photo:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+    }
+
+    .uni-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.01);
+      transition: transform 0.45s ease;
+    }
+
+    .uni-photo:hover img {
+      transform: scale(1.05);
+    }
+
+    .uni-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.64));
+      z-index: 1;
+    }
+
+    .uni-photo-caption {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 12px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.35;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.32);
+      z-index: 2;
+    }
+
+    .uni-photo-caption span {
+      display: block;
+      margin-top: 2px;
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0.82;
+    }
+
+    .uni-photo--harbour {
+      grid-column: span 3;
+      grid-row: span 2;
+    }
+
+    .uni-photo--fitness {
+      grid-column: span 3;
+      grid-row: span 3;
+    }
+
+    .uni-photo--history {
+      grid-column: span 3;
+      grid-row: span 2;
+    }
+
+    .uni-photo--social {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .uni-photo--champion {
+      grid-column: span 4;
+      grid-row: span 2;
+    }
+
+    .pillar-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 20px;
+    }
+
+    .pillar-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      opacity: 0.5;
+    }
+
+    .pillar-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .pillar-body {
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .pillar-body strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .pillar-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    /* Pillar color themes */
+    .pillar--study .pillar-icon { background: var(--accent-bg); }
+    .pillar--study .pillar-label { color: var(--accent); opacity: 1; }
+    .pillar--study .pillar-title { color: var(--accent); }
+    .pillar--study .tag { background: var(--accent-bg); color: var(--accent); }
+
+    .pillar--sport .pillar-icon { background: var(--green-bg); }
+    .pillar--sport .pillar-label { color: var(--green); opacity: 1; }
+    .pillar--sport .pillar-title { color: var(--green); }
+    .pillar--sport .tag { background: var(--green-bg); color: var(--green); }
+
+    .pillar--social .pillar-icon { background: var(--amber-bg); }
+    .pillar--social .pillar-label { color: var(--amber); opacity: 1; }
+    .pillar--social .pillar-title { color: var(--amber); }
+    .pillar--social .tag { background: var(--amber-bg); color: var(--amber); }
+
+    .pillar--work .pillar-icon { background: var(--primary-bg); }
+    .pillar--work .pillar-label { color: var(--primary); opacity: 1; }
+    .pillar--work .pillar-title { color: var(--primary); }
+    .pillar--work .tag { background: var(--primary-bg); color: var(--primary); }
+
+    /* Stat badges in sport card */
+    .stat-row {
+      display: flex;
+      gap: 12px;
+      margin: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--green-bg);
+      border-radius: 10px;
+      padding: 10px 16px;
+      min-width: 72px;
+    }
+
+    .stat-value {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--green);
+      line-height: 1;
+    }
+
+    .stat-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .pillar-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .uni-collage {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+      }
+
+      .uni-photo,
+      .uni-photo--harbour,
+      .uni-photo--fitness,
+      .uni-photo--history,
+      .uni-photo--social,
+      .uni-photo--champion {
+        grid-column: auto;
+        grid-row: auto;
+        aspect-ratio: 4 / 3;
+      }
+
+      .uni-photo--fitness {
+        aspect-ratio: 3 / 4;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">JIAYU GE</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="interests.html">Interests</a></li>
+      <li><a href="vibes.html">Vibes</a></li>
+      <li><a href="now.html">Now</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- Content -->
+<section class="section" style="padding-top: 140px;">
+  <div class="container" style="max-width: 900px;">
+
+    <!-- Back button -->
+    <a href="timeline.html" class="detail-back reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回时间线 <span style="font-size:11px;color:var(--text-muted);">← Back to Timeline</span>
+    </a>
+
+    <!-- Header -->
+    <div class="detail-period reveal" style="color: var(--accent);">2025 — Now</div>
+    <h1 class="detail-title reveal reveal-delay-1">大学阶段 <span style="font-weight:400;font-size:16px;color:var(--text-muted);">University</span></h1>
+    <div class="detail-subtitle reveal reveal-delay-2">港大 · 学习 · 运动 · 社交 · 实习 <span style="font-size:13px;color:var(--text-muted);">HKU · Study · Sports · Social · Internship</span></div>
+    <div class="detail-location reveal reveal-delay-2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      中国香港 · 香港大学 <span style="font-size:12px;color:var(--text-muted);">Hong Kong, China · HKU</span>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div class="uni-collage reveal reveal-delay-3">
+      <figure class="uni-photo uni-photo--harbour">
+        <img decoding="async" src="assets/uni-1.webp" alt="在维港看别人画画" width="1200" height="900" loading="lazy">
+        <figcaption class="uni-photo-caption">在维港看别人画画 <span>Watching artists at Victoria Harbour</span></figcaption>
+      </figure>
+      <figure class="uni-photo uni-photo--fitness">
+        <img decoding="async" src="assets/uni-2.webp" alt="健身" width="1200" height="1600" loading="lazy">
+        <figcaption class="uni-photo-caption">健身 <span>Fitness as discipline</span></figcaption>
+      </figure>
+      <figure class="uni-photo uni-photo--history">
+        <img decoding="async" src="assets/uni-3.webp" alt="学习历史" width="1200" height="900" loading="lazy">
+        <figcaption class="uni-photo-caption">学习历史 <span>Studying history beyond my major</span></figcaption>
+      </figure>
+      <figure class="uni-photo uni-photo--social">
+        <img decoding="async" src="assets/uni-4.webp" alt="社交" width="1200" height="900" loading="lazy">
+        <figcaption class="uni-photo-caption">社交 <span>Learning through people</span></figcaption>
+      </figure>
+      <figure class="uni-photo uni-photo--champion">
+        <img decoding="async" src="assets/uni-5.webp" alt="联赛夺冠" width="1200" height="783" loading="lazy">
+        <figcaption class="uni-photo-caption">联赛夺冠 <span>League champions</span></figcaption>
+      </figure>
+    </div>
+
+    <!-- Narrative -->
+    <div class="detail-narrative reveal">
+      <p>2025年9月，我从海口来到香港，进入香港大学 School of Computing and Data Science，拟分流 AI & Data Science 方向。离开那片熟悉的土地，才真正明白：<strong>知识不只来自课堂，成长需要整个人全力投入生活本身</strong>。<br><span style="font-size:12px;color:var(--text-muted);">In September 2025, I left Haikou for Hong Kong and entered HKU's School of Computing and Data Science, with AI & Data Science as my intended track. Leaving familiar ground taught me that knowledge does not only come from class; growth asks for full participation in life.</span></p>
+      <p style="margin-top: 16px;">我给这段时间定了四个维度——学习、运动、社交、实习。不是因为别人告诉我应该这样，而是我自己想活得更完整一点。<br><span style="font-size:12px;color:var(--text-muted);">I organized this chapter around four dimensions: study, sports, social life, and internship. Not because anyone assigned them to me, but because I wanted to live with more range.</span></p>
+    </div>
+
+    <!-- Four Pillars -->
+    <div class="detail-separator reveal"></div>
+    <h2 class="detail-section-title reveal">四个维度 <span style="font-size:13px;color:var(--text-muted);">Four Dimensions</span></h2>
+
+    <div class="pillar-grid">
+
+      <!-- 学习 -->
+      <div class="pillar-card pillar--study reveal">
+        <div class="pillar-icon">📚</div>
+        <div class="pillar-label">Learning</div>
+        <div class="pillar-title">学习 <span style="font-weight:400;font-size:14px;color:var(--text-muted);">Study</span></div>
+        <div class="pillar-body">
+          <p>保持了稳定的绩点，但我从不认为课堂是知识的边界。Python、C、数据分析、Linux——这些是课堂里的；Vibe Coding、虚拟货币、营养学、运动学、政治经济学——这些是我自己去找的。<br><span style="font-size:12px;color:var(--text-muted);">I kept a solid GPA, but I never treated the classroom as the edge of learning. Python, C, data analysis, and Linux came through coursework; vibe coding, crypto, nutrition, exercise science, and political economy came through my own curiosity.</span></p>
+          <p style="margin-top: 10px;">我参加了<strong>第11届香港大学生创新及创业大赛</strong>，作为团队发起人提交了"人才暨机械人运营中心"完整商业提案。赢没赢奖不是重点，把一个想法打磨成18页商业文件，才是真实的锻炼。<br><span style="font-size:12px;color:var(--text-muted);">I entered the 11th HKU Innovation and Entrepreneurship Competition as the founder of a "Talent & Robotics Operations Center" proposal. The real exercise was turning a rough idea into an 18-page business document.</span></p>
+          <p style="margin-top: 10px;">我还担任编程与机器人研学团的助教，把自己正在学的东西教给更小的学生——<strong>能教会别人，才算真正学会</strong>。<br><span style="font-size:12px;color:var(--text-muted);">I also worked as a teaching assistant for a coding and robotics study camp. Teaching younger students forced me to make my own understanding clearer.</span></p>
+        </div>
+        <div class="pillar-tags">
+          <span class="tag">AI & Data Science</span>
+          <span class="tag">Vibe Coding</span>
+          <span class="tag">创新创业大赛 <span style="font-size:10px;">Innovation Competition</span></span>
+          <span class="tag">研学助教 <span style="font-size:10px;">Teaching Assistant</span></span>
+        </div>
+      </div>
+
+      <!-- 运动 -->
+      <div class="pillar-card pillar--sport reveal">
+        <div class="pillar-icon">⚽</div>
+        <div class="pillar-label">Sports</div>
+        <div class="pillar-title">运动 <span style="font-weight:400;font-size:14px;color:var(--text-muted);">Sports</span></div>
+        <div class="pillar-body">
+          <p>高考结束后，我的体重飙升到<strong>87.5 kg</strong>——是我人生中最重的时候。整整三年，身体的代价在那个夏天算了一笔总账。<br><span style="font-size:12px;color:var(--text-muted);">After the gaokao, my weight reached 87.5 kg, the heaviest I had ever been. That summer made the cost of three intense years impossible to ignore.</span></p>
+          <p style="margin-top: 10px;">我没有交给任何人解决，自己系统学习了营养学知识，制定饮食计划，坚持健身。一年多之后，体重降至 <strong>69 kg，体脂率从 24% 降到 16.5%</strong>。这不是数字的游戏，是我和自己身体重新建立信任的过程。<br><span style="font-size:12px;color:var(--text-muted);">I did not outsource the solution. I studied nutrition, designed my own diet plan, and trained consistently. Over the next year, I dropped to 69 kg and moved from 24% body fat to 16.5%. The point was not the number; it was rebuilding trust with my body.</span></p>
+          <p style="margin-top: 10px;">足球从未停过。作为<strong>香港大学内地生足球队</strong>的一员，参加数十场训练、十余场正式比赛。在联赛决赛中，我<strong>打入一粒点球</strong>，随队斩获<strong>内地生足球联赛冠军</strong>。<br><span style="font-size:12px;color:var(--text-muted);">Football never stopped. As a member of the HKU mainland-student football team, I trained dozens of times, played over ten official matches. In the league final, I scored a penalty kick and we won the Mainland Student Football League championship.</span></p>
+        </div>
+        <div class="stat-row">
+          <div class="stat-badge">
+            <span class="stat-value">−18.5<span style="font-size:13px">kg</span></span>
+            <span class="stat-desc">体重变化 <span style="font-size:10px;">Weight Change</span></span>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-value">16.5<span style="font-size:13px">%</span></span>
+            <span class="stat-desc">当前体脂率 <span style="font-size:10px;">Body Fat</span></span>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-value">🏆</span>
+            <span class="stat-desc">联赛冠军 <span style="font-size:10px;">League Champion</span></span>
+          </div>
+        </div>
+        <div class="pillar-tags">
+          <span class="tag">健身 <span style="font-size:10px;">Fitness</span></span>
+          <span class="tag">营养学 <span style="font-size:10px;">Nutrition</span></span>
+          <span class="tag">足球 <span style="font-size:10px;">Football</span></span>
+          <span class="tag">内地生联赛冠军 <span style="font-size:10px;">League Champions</span></span>
+        </div>
+      </div>
+
+      <!-- 社交 -->
+      <div class="pillar-card pillar--social reveal">
+        <div class="pillar-icon">🌐</div>
+        <div class="pillar-label">Social</div>
+        <div class="pillar-title">社交 <span style="font-weight:400;font-size:14px;color:var(--text-muted);">Social</span></div>
+        <div class="pillar-body">
+          <p>香港给了我一个极少数地方能提供的东西：<strong>在同一个屋檐下，和来自全世界的人共处</strong>。我的朋友里有内地同学、内地高校的交换生、本地香港人、还有来自不同国家的外国人。<br><span style="font-size:12px;color:var(--text-muted);">Hong Kong gave me something few places can: living under the same roof with people from all over the world. My friends include mainland classmates, exchange students, local Hong Kongers, and internationals from various countries.</span></p>
+          <p style="margin-top: 10px;">每个人身上都有我不曾拥有的视角和经验。我不刻意维护人脉，但我认真对待每一段值得深入的关系。<strong>真正的社交，是被人影响，也影响别人</strong>——不是人脉积累，而是视野拓展。<br><span style="font-size:12px;color:var(--text-muted);">Everyone carries perspectives and experiences I do not have. I do not treat relationships as networking inventory; I treat them as chances to widen my view and become more precise about the world.</span></p>
+        </div>
+        <div class="pillar-tags">
+          <span class="tag">内地同学 <span style="font-size:10px;">Mainland Classmates</span></span>
+          <span class="tag">交换生 <span style="font-size:10px;">Exchange Students</span></span>
+          <span class="tag">本地港人 <span style="font-size:10px;">Local Hong Kongers</span></span>
+          <span class="tag">国际友人 <span style="font-size:10px;">International Friends</span></span>
+        </div>
+      </div>
+
+      <!-- 实习 -->
+      <div class="pillar-card pillar--work reveal">
+        <div class="pillar-icon">💼</div>
+        <div class="pillar-label">Internship</div>
+        <div class="pillar-title">实习 <span style="font-weight:400;font-size:14px;color:var(--text-muted);">Internship</span></div>
+        <div class="pillar-body">
+          <p><strong>EDU Group (Worldwide) Limited</strong> — 行政与项目助理。三场大型赛事的场务统筹，最多一次调度 400+ 名参与者；至少3家港媒覆盖。我在这里学到的不是执行手册，而是在混乱中保持清醒的能力。<br><span style="font-size:12px;color:var(--text-muted);">EDU Group (Worldwide) Limited, Admin & Project Assistant. I coordinated logistics for three major events, with up to 400+ participants at peak and coverage from at least three Hong Kong media outlets. The lesson was simple: stay clear-headed when the room gets messy.</span></p>
+          <p style="margin-top: 10px;"><strong>广发乾和 · 特殊机会投资部</strong> — 投资实习生。在一线投资场景中学习商业判断与数据分析，把课堂里学的逻辑和真实市场的变量对齐。<br><span style="font-size:12px;color:var(--text-muted);">GF Qianhe, Special Opportunity Investment Division, Investment Intern. I am learning business judgment and data analysis in real investment settings, where classroom logic has to meet market variables.</span></p>
+          <p style="margin-top: 10px;">此外，我还担任<strong>编程与机器人研学团助教</strong>，在教的过程中不断加深对技术基础的理解。<br><span style="font-size:12px;color:var(--text-muted);">Additionally, I served as a teaching assistant for a coding & robotics study camp, deepening my grasp of technical fundamentals through teaching.</span></p>
+        </div>
+        <div class="pillar-tags">
+          <span class="tag">EDU Group</span>
+          <span class="tag">广发乾和</span>
+          <span class="tag">场务统筹 <span style="font-size:10px;">Event Logistics</span></span>
+          <span class="tag">投资分析 <span style="font-size:10px;">Investment Analysis</span></span>
+          <span class="tag">研学助教 <span style="font-size:10px;">Teaching Assistant</span></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Key Events -->
+    <div class="detail-separator reveal"></div>
+    <h2 class="detail-section-title reveal">重要节点 <span style="font-size:13px;color:var(--text-muted);">Key Milestones</span></h2>
+    <div class="detail-events">
+
+      <div class="detail-event reveal">
+        <div class="detail-event-date">2025.09</div>
+        <div class="detail-event-title">入学香港大学 <span style="font-size:12px;color:var(--text-muted);">Enrolling at HKU</span></div>
+        <div class="detail-event-desc">School of Computing and Data Science，拟分流 AI & Data Science。从海南到香港，换了坐标系，也换了看世界的方式。<br><span style="font-size:12px;color:var(--text-muted);">From Hainan to Hong Kong — a new coordinate system, and a new way of seeing the world.</span></div>
+        <div class="detail-event-tags">
+          <span class="tag" style="background: var(--accent-bg); color: var(--accent);">HKU</span>
+          <span class="tag" style="background: var(--green-bg); color: var(--green);">AI & Data Science</span>
+        </div>
+      </div>
+
+      <div class="detail-event reveal">
+        <div class="detail-event-date">2025.09 — 2026.03</div>
+        <div class="detail-event-title">EDU Group · 三场赛事统筹 <span style="font-size:12px;color:var(--text-muted);">Three Event Logistics</span></div>
+        <div class="detail-event-desc">行政与项目助理。先后担任优必选发布会场务主管（50+ 人/3家媒体）、大湾区青少年AI大赛赛务执行（200+ 人）、湾区 AI+ESG 创想大赛场务主管（深圳，直带6人，整体400+ 参与者）。<br><span style="font-size:12px;color:var(--text-muted);">Admin & Project Assistant. Served as venue logistics lead for UBTECH launch event (50+ attendees / 3 media outlets), operations exec for Greater Bay Youth AI Competition (200+ participants), and venue logistics lead for Bay Area AI+ESG Innovation Contest (Shenzhen, directly managing 6 staff, overall 400+ participants).</span></div>
+        <div class="detail-event-tags">
+          <span class="tag" style="background: var(--primary-bg); color: var(--primary);">场务主管 <span style="font-size:10px;">Event Lead</span></span>
+          <span class="tag">400+ 参与者 <span style="font-size:10px;">Participants</span></span>
+          <span class="tag">港媒报道 <span style="font-size:10px;">HK Media Coverage</span></span>
+        </div>
+      </div>
+
+      <div class="detail-event reveal">
+        <div class="detail-event-date">2025 — 2026</div>
+        <div class="detail-event-title">内地生足球联赛冠军 <span style="font-size:12px;color:var(--text-muted);">Mainland Student Football League Champions</span></div>
+        <div class="detail-event-desc">香港大学内地生足球队成员，数十场训练、十余场正式比赛。联赛决赛打入一粒点球，随队夺冠。<br><span style="font-size:12px;color:var(--text-muted);">Member of HKU mainland-student football team. Dozens of training sessions, over ten official matches. Scored a penalty in the league final, won the championship with the team.</span></div>
+        <div class="detail-event-tags">
+          <span class="tag" style="background: var(--green-bg); color: var(--green);">🏆 联赛冠军 <span style="font-size:10px;">League Champions</span></span>
+          <span class="tag">决赛点球 <span style="font-size:10px;">Final Penalty</span></span>
+        </div>
+      </div>
+
+      <div class="detail-event reveal">
+        <div class="detail-event-date">2025 — 2026</div>
+        <div class="detail-event-title">体重管理：87.5kg → 69kg <span style="font-size:12px;color:var(--text-muted);">Weight Transformation</span></div>
+        <div class="detail-event-desc">高考后体重升至87.5kg。系统学习营养学，坚持健身，体脂率从24%降至16.5%，体重下降18.5kg。不是外力驱动，是自己想对自己负责。<br><span style="font-size:12px;color:var(--text-muted);">Weight peaked at 87.5 kg after gaokao. Systematically studied nutrition, stuck to fitness — body fat from 24% to 16.5%, weight down 18.5 kg. Not driven by outside pressure — just wanting to be accountable to myself.</span></div>
+        <div class="detail-event-tags">
+          <span class="tag" style="background: var(--green-bg); color: var(--green);">−18.5 kg</span>
+          <span class="tag">体脂 16.5% <span style="font-size:10px;">Body Fat</span></span>
+          <span class="tag">营养学 <span style="font-size:10px;">Nutrition</span></span>
+        </div>
+      </div>
+
+      <div class="detail-event reveal">
+        <div class="detail-event-date">2026.01</div>
+        <div class="detail-event-title">第11届港大创新创业大赛 <span style="font-size:12px;color:var(--text-muted);">11th HKU Innovation & Entrepreneurship Competition</span></div>
+        <div class="detail-event-desc">发起"人才暨机械人运营中心"项目提案，信息技术赛道，创业计划类别。作为团队 Project Leader，主导18页完整商业文件。<br><span style="font-size:12px;color:var(--text-muted);">Initiated the "Talent & Robotics Operations Center" project proposal, Information Technology track, Business Plan category. As Project Leader, led the 18-page full business document.</span></div>
+        <div class="detail-event-tags">
+          <span class="tag" style="background: var(--accent-bg); color: var(--accent);">Project Leader</span>
+          <span class="tag">创业计划 <span style="font-size:10px;">Business Plan</span></span>
+        </div>
+      </div>
+
+      <div class="detail-event reveal">
+        <div class="detail-event-date">2026.06</div>
+        <div class="detail-event-title">广发乾和 · 特殊机会投资部 <span style="font-size:12px;color:var(--text-muted);">GF Qianhe · Special Opportunity Investment</span></div>
+        <div class="detail-event-desc">投资实习生。在一线私募场景中学习特殊机会投资逻辑，将数据分析能力落地于真实投研工作。<br><span style="font-size:12px;color:var(--text-muted);">Investment intern. Learning special opportunity investment logic in frontline PE scenarios, grounding data analysis skills in real investment research work.</span></div>
+        <div class="detail-event-tags">
+          <span class="tag" style="background: var(--primary-bg); color: var(--primary);">投资实习 <span style="font-size:10px;">Investment Intern</span></span>
+          <span class="tag" style="background: var(--accent-bg); color: var(--accent);">数据分析</span>
+        </div>
+      </div>
+
+      <div class="detail-event reveal">
+        <div class="detail-event-date">2026</div>
+        <div class="detail-event-title">Vibe Coding · 个人项目落地 <span style="font-size:12px;color:var(--text-muted);">Personal Projects Launched</span></div>
+        <div class="detail-event-desc">借助 AI 开发工具，从零搭建个人网站与"摘帽咯"ST摘星摘帽筛选工作台。知识不只来自课堂，真实产品才是最好的教材。<br><span style="font-size:12px;color:var(--text-muted);">Using AI development tools, I built this personal website and the "摘帽咯" ST screening workstation from scratch. Real products have become one of my best ways to learn.</span></div>
+        <div class="detail-event-tags">
+          <span class="tag" style="background: var(--amber-bg); color: var(--amber);">Vibe Coding</span>
+          <span class="tag">个人项目 <span style="font-size:10px;">Personal Project</span></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Reflection -->
+    <div class="detail-separator reveal"></div>
+    <h2 class="detail-section-title reveal">此刻的理解 <span style="font-size:13px;color:var(--text-muted);">What This Year Taught Me</span></h2>
+    <div class="detail-reflection reveal">
+      <p>我不是一个只会坐在图书馆里的人。我也不是一个为了简历而活动的人。<br><span style="font-size:12px;color:var(--text-muted);">I'm not someone who only sits in the library. Nor someone who moves just to pad a résumé.</span></p>
+      <p style="margin-top: 14px;">大学这一年，我尝试活得更完整：<strong>用头脑去学，用身体去练，用关系去感知世界，用实践去验证想法</strong>。四个维度不是割裂的，它们彼此滋养，共同构成一个更立体的我。<br><span style="font-size:12px;color:var(--text-muted);">In this first university year, I tried to live with more wholeness: learn with my mind, train with my body, read the world through relationships, and test ideas through practice. These dimensions are not separate; they strengthen each other.</span></p>
+      <p style="margin-top: 14px;">故事还在继续。<br><span style="font-size:12px;color:var(--text-muted);">Still building. Still becoming.</span></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-text">&copy; 2026 Ge Jiayu. Growing through discipline and reflection. <a href="contact.html">Get in touch</a></p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

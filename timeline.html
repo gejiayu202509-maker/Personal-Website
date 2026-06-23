@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline — Ge Jiayu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400;500&family=Noto+Serif+SC:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"><style>
+    /* Timeline Hub — Stage Cards */
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .stage-card {
+      position: relative;
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 16px;
+      border: 0.5px solid var(--border);
+      padding: 40px 32px 36px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      min-height: 420px;
+    }
+
+    .stage-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      border-radius: 16px 16px 0 0;
+      transition: height 0.4s ease;
+    }
+
+    .stage-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .stage-card:hover::before {
+      height: 6px;
+    }
+
+    .stage-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .stage-card:hover::after {
+      opacity: 1;
+    }
+
+    /* Color variants */
+    .stage-card--junior::before { background: linear-gradient(135deg, #E8A838, #D4943A); }
+    .stage-card--senior::before { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+    .stage-card--uni::before { background: linear-gradient(135deg, var(--accent), var(--accent-light)); }
+
+    .stage-card--junior::after {
+      background:
+        radial-gradient(circle at 20% 16%, rgba(232,168,56,0.16), transparent 30%),
+        linear-gradient(145deg, rgba(255,248,232,0.36), transparent 55%);
+    }
+
+    .stage-card--senior::after {
+      background:
+        linear-gradient(135deg, transparent 0 18%, rgba(160,64,64,0.07) 18% 19%, transparent 19% 42%, rgba(160,64,64,0.06) 42% 43%, transparent 43%),
+        radial-gradient(circle at 82% 18%, rgba(160,64,64,0.12), transparent 28%);
+    }
+
+    .stage-card--uni::after {
+      background:
+        radial-gradient(circle at 82% 18%, rgba(55,138,221,0.14), transparent 32%),
+        linear-gradient(160deg, transparent 0 58%, rgba(55,138,221,0.09) 58% 100%);
+    }
+
+    .stage-card:hover.stage-card--junior { border-color: rgba(212,148,58,0.3); }
+    .stage-card:hover.stage-card--senior { border-color: rgba(160,64,64,0.3); }
+    .stage-card:hover.stage-card--uni { border-color: rgba(55,138,221,0.3); }
+
+    .stage-period {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+      opacity: 0.5;
+    }
+
+    .stage-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stage-card--junior .stage-kicker { background: var(--amber-bg); color: var(--amber); }
+    .stage-card--senior .stage-kicker { background: var(--primary-bg); color: var(--primary); }
+    .stage-card--uni .stage-kicker { background: var(--accent-bg); color: var(--accent); }
+
+    .stage-card--junior .stage-period { color: #BA7517; }
+    .stage-card--senior .stage-period { color: var(--primary); }
+    .stage-card--uni .stage-period { color: var(--accent); }
+
+    .stage-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .stage-subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .stage-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .stage-location svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.6;
+    }
+
+    .stage-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+
+    .stage-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stage-metric {
+      padding: 10px 12px;
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.38);
+    }
+
+    .stage-metric-value {
+      font-family: var(--font-display);
+      font-size: 20px;
+      line-height: 1;
+      color: var(--text-primary);
+    }
+
+    .stage-metric-label {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .stage-highlight-tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .stage-card--junior .stage-highlight-tag { background: var(--amber-bg); color: var(--amber); }
+    .stage-card--senior .stage-highlight-tag { background: var(--primary-bg); color: var(--primary); }
+    .stage-card--uni .stage-highlight-tag { background: var(--accent-bg); color: var(--accent); }
+
+    .stage-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: gap 0.3s ease;
+    }
+
+    .stage-card--junior .stage-cta { color: #BA7517; }
+    .stage-card--senior .stage-cta { color: var(--primary); }
+    .stage-card--uni .stage-cta { color: var(--accent); }
+
+    .stage-card:hover .stage-cta { gap: 12px; }
+
+    .stage-cta svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .stage-card:hover .stage-cta svg { transform: translateX(3px); }
+
+    /* Decorative number */
+    .stage-number {
+      position: absolute;
+      bottom: -8px;
+      right: 12px;
+      font-family: var(--font-display);
+      font-size: 80px;
+      font-weight: 400;
+      line-height: 1;
+      opacity: 0.04;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .stage-card:hover .stage-number { opacity: 0.07; }
+
+    .stage-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .stage-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .stage-card { padding: 32px 24px 28px; min-height: auto; }
+      .stage-title { font-size: 24px; }
+      .stage-number { font-size: 60px; }
+    }
+
+    @media (max-width: 480px) {
+      .stage-card { padding: 28px 20px 24px; }
+      .stage-title { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">JIAYU GE</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="interests.html">Interests</a></li>
+      <li><a href="vibes.html">Vibes</a></li>
+      <li><a href="now.html">Now</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<section class="section" style="padding-top: 140px;">
+  <div class="container">
+    <p class="section-label reveal">Timeline</p>
+    <h1 class="section-title reveal reveal-delay-1">我的成长 <span style="font-weight:400;font-size:16px;color:var(--text-muted);">My Journey</span></h1>
+    <p class="section-desc reveal reveal-delay-2">Three stages. Three lenses. One path.</p>
+  </div>
+</section>
+
+<!-- Stage Cards -->
+<section class="section" style="padding-top: 20px;">
+  <div class="container">
+    <div class="stage-grid">
+
+      <!-- Junior High -->
+      <a href="timeline-junior.html" class="stage-card stage-card--junior reveal reveal-delay-1">
+        <div class="stage-period">2019 — 2022</div>
+        <div class="stage-kicker">DISCOVERY ARC</div>
+        <div class="stage-title">初中阶段</div>
+        <div class="stage-subtitle">启蒙与探索 <span style="font-size:12px;opacity:0.6;font-weight:400;">· Discovery & Curiosity</span></div>
+        <div class="stage-location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          海南海口
+        </div>
+        <div class="stage-highlights">
+          <span class="stage-highlight-tag">理科启蒙</span>
+          <span class="stage-highlight-tag">好奇心</span>
+          <span class="stage-highlight-tag">第一性思维</span>
+        </div>
+        <div class="stage-metrics">
+          <div class="stage-metric">
+            <div class="stage-metric-value">01</div>
+            <div class="stage-metric-label">第一次被科学点燃</div>
+          </div>
+          <div class="stage-metric">
+            <div class="stage-metric-value">3Y</div>
+            <div class="stage-metric-label">探索与积累</div>
+          </div>
+        </div>
+        <div class="stage-cta">
+          查看详情 <span style="font-size:11px;opacity:0.6;font-weight:400;">View Details</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="stage-number">01</div>
+      </a>
+
+      <!-- Senior High -->
+      <a href="timeline-senior.html" class="stage-card stage-card--senior reveal reveal-delay-2">
+        <div class="stage-period">2022 — 2025</div>
+        <div class="stage-kicker">DISCIPLINE ARC</div>
+        <div class="stage-title">高中阶段</div>
+        <div class="stage-subtitle">迷茫 · 觉醒 · 自我定义 <span style="font-size:12px;opacity:0.6;font-weight:400;">· Lost · Awakened · Self-Defined</span></div>
+        <div class="stage-location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          海南海口
+        </div>
+        <div class="stage-highlights">
+          <span class="stage-highlight-tag">高考留学双保险</span>
+          <span class="stage-highlight-tag">雅思7.0</span>
+          <span class="stage-highlight-tag">AST 710</span>
+          <span class="stage-highlight-tag">港大第一志愿</span>
+        </div>
+        <div class="stage-metrics">
+          <div class="stage-metric">
+            <div class="stage-metric-value">7.0</div>
+            <div class="stage-metric-label">IELTS</div>
+          </div>
+          <div class="stage-metric">
+            <div class="stage-metric-value">0.3%</div>
+            <div class="stage-metric-label">省内高考位次</div>
+          </div>
+        </div>
+        <div class="stage-cta">
+          查看详情 <span style="font-size:11px;opacity:0.6;font-weight:400;">View Details</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="stage-number">02</div>
+      </a>
+
+      <!-- University -->
+      <a href="timeline-university.html" class="stage-card stage-card--uni reveal reveal-delay-3">
+        <div class="stage-period">2025 — Now</div>
+        <div class="stage-kicker">EXPANSION ARC</div>
+        <div class="stage-title">大学阶段</div>
+        <div class="stage-subtitle">学习 · 运动 · 社交 · 实习 <span style="font-size:12px;opacity:0.6;font-weight:400;">· Study · Sports · Social · Internship</span></div>
+        <div class="stage-location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          中国香港
+        </div>
+        <div class="stage-highlights">
+          <span class="stage-highlight-tag">HKU · AI & Data</span>
+          <span class="stage-highlight-tag">联赛冠军</span>
+          <span class="stage-highlight-tag">广发乾和</span>
+          <span class="stage-highlight-tag">Vibe Coding</span>
+        </div>
+        <div class="stage-metrics">
+          <div class="stage-metric">
+            <div class="stage-metric-value">4D</div>
+            <div class="stage-metric-label">学习/运动/社交/实习</div>
+          </div>
+          <div class="stage-metric">
+            <div class="stage-metric-value">-18.5</div>
+            <div class="stage-metric-label">kg 自我管理</div>
+          </div>
+        </div>
+        <div class="stage-cta">
+          查看详情 <span style="font-size:11px;opacity:0.6;font-weight:400;">View Details</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="stage-number">03</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-text">&copy; 2026 Ge Jiayu. Growing through discipline and reflection. <a href="contact.html">Get in touch</a></p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

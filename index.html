@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ge Jiayu — 我先成为我自己 / Before Everything Else, I Become Myself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="preload" as="image" href="assets/hero-bg.webp"></head>
+<body class="home-body">
+
+<!-- ==================== HERO IMAGE BACKGROUND ==================== -->
+<div class="hero-bg-layer" id="heroBgLayer">
+  <!-- Main photo: HKU sunrise with figure silhouette -->
+  <img width="1536" height="1024" fetchpriority="high" decoding="async" class="hero-bg-img"
+    src="assets/hero-bg.webp"
+    alt="HKU Main Building at sunrise"
+    id="heroBgImg"/>
+
+  <!-- Atmospheric overlays -->
+  <div class="bg-overlay-dark"></div>
+  <div class="bg-overlay-vignette"></div>
+  <div class="bg-overlay-gradient"></div>
+  <div class="bg-overlay-bloom"></div>
+
+  <!-- Subtle grain texture -->
+  <div class="grain-layer"></div>
+</div>
+
+<!-- ==================== NAVIGATION (liquid glass) ==================== -->
+<nav class="nav-home" id="navHome">
+  <div class="nav-home-inner">
+    <a href="index.html" class="nav-home-logo">
+      JIAYU<span class="logo-dot">.</span>GE
+    </a>
+
+    <div class="nav-home-center liquid-glass">
+      <a href="projects.html">PROJECTS</a>
+      <a href="timeline.html">TIMELINE</a>
+      <a href="skills.html">SKILLS</a>
+      <a href="interests.html">INTERESTS</a>
+      <a href="vibes.html">VIBES</a>
+      <a href="now.html">NOW</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+
+    <a href="contact.html" class="nav-home-cta liquid-glass">CONTACT</a>
+
+    <div class="nav-hamburger" id="navHamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div class="nav-mobile" id="navMobile">
+    <a href="projects.html">PROJECTS</a>
+    <a href="timeline.html">TIMELINE</a>
+    <a href="skills.html">SKILLS</a>
+    <a href="interests.html">INTERESTS</a>
+    <a href="vibes.html">VIBES</a>
+    <a href="now.html">NOW</a>
+    <a href="about.html">ABOUT</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO CONTENT ==================== -->
+<div class="hero-container">
+
+  <!-- Headline area -->
+  <div class="hero-headline">
+    <div class="hero-accent-line"></div>
+    <h1 class="hero-name-cn">葛家羽</h1>
+    <p class="hero-name-en">GE<span class="name-space"></span>JIAYU</p>
+    <p class="hero-motto">我先成为我自己</p>
+    <p class="hero-motto-en">Before everything else, I become myself.</p>
+    <div class="hero-tag">
+      <span class="tag-dot"></span>
+      HKU &middot; AI &amp; Data Science &middot; Rising Sophomore
+    </div>
+  </div>
+
+  <!-- Bottom block -->
+  <div class="hero-bottom">
+    <p class="hero-quote">
+      <span>Transformation is not motivation.</span><br>
+      <span class="quote-fade">It is repetition.</span>
+    </p>
+    <a href="about.html" class="hero-btn">EXPLORE MY JOURNEY</a>
+    <div class="hero-tagline">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      WHAT YOU BUILD IN SILENCE DEFINES WHAT YOU BECOME
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

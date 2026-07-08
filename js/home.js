@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
       targetY = ((e.clientY - cy) / cy) * maxOffset * 0.6; // less vertical
     });
 
+    let parallaxRunning = true;
     function animateParallax() {
+      if (!parallaxRunning) return;
       currentX += (targetX - currentX) * lerpFactor;
       currentY += (targetY - currentY) * lerpFactor;
 
@@ -32,6 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(animateParallax);
     }
     requestAnimationFrame(animateParallax);
+
+    // Pause the animation loop when the tab is hidden (saves CPU/battery)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        parallaxRunning = false;
+      } else if (!parallaxRunning) {
+        parallaxRunning = true;
+        requestAnimationFrame(animateParallax);
+      }
+    });
   }
 
   // ---- 2. NAV SCROLL EFFECT ----

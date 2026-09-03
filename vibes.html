@@ -34,6 +34,7 @@
       border: 0.5px solid var(--border);
       overflow: hidden;
       margin-bottom: 18px;
+      min-width: 0;
     }
 
     .vibes-movie-media,
@@ -84,6 +85,7 @@
       color: var(--text-primary);
       margin-bottom: 6px;
       line-height: 1.35;
+      overflow-wrap: anywhere;
     }
 
     .vibes-movie-meta,
@@ -91,6 +93,7 @@
       font-size: 13px;
       color: var(--text-muted);
       margin-bottom: 12px;
+      overflow-wrap: anywhere;
     }
 
     .vibes-movie-desc,
@@ -98,6 +101,7 @@
       font-size: 14px;
       color: var(--text-secondary);
       line-height: 1.7;
+      overflow-wrap: anywhere;
     }
 
     .book-quote {
@@ -296,6 +300,27 @@
         padding: 10px 14px;
       }
     }
+
+    @media (max-width: 480px) {
+      .vibes-movie-media,
+      .book-media {
+        padding: 14px;
+      }
+
+      .vibes-poster-frame,
+      .book-cover-frame {
+        max-width: 240px;
+      }
+
+      .vibes-movie-info,
+      .book-info {
+        padding: 16px;
+      }
+
+      .travel-dest-body {
+        min-height: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -334,31 +359,31 @@
     <p class="section-label reveal">Movies</p>
     <h2 class="section-title reveal reveal-delay-1" style="font-size: 26px;">最近看的电影 <span style="font-size:13px;color:var(--text-muted);">Recent Watches</span></h2>
 
-    <!-- The Covenant -->
+    <!-- Spider-Man: Brand New Day -->
     <div class="vibes-movie-card reveal reveal-delay-2" style="margin-top: 20px;">
       <div class="vibes-movie-media">
         <div class="vibes-poster-frame">
-          <img width="800" height="1000" loading="lazy" decoding="async" class="vibes-movie-poster" src="assets/movie-covenant.webp" alt="The Covenant">
+          <img width="800" height="1200" loading="lazy" decoding="async" class="vibes-movie-poster" src="assets/movie-spiderman-brand-new-day.webp" alt="蜘蛛侠：崭新之日">
         </div>
       </div>
       <div class="vibes-movie-info">
-        <div class="vibes-movie-title">The Covenant</div>
-        <div class="vibes-movie-meta">Guy Ritchie · 2023 · War / Drama</div>
-        <div class="vibes-movie-desc">A raw, gripping story of loyalty forged in the crucible of war. When U.S. Army Sergeant John Kinley returns to Afghanistan to rescue the interpreter who once saved his life, the film becomes a meditation on debt, honor, and the bonds that transcend borders. Gyllenhaal delivers one of his most restrained and powerful performances.</div>
+        <div class="vibes-movie-title">蜘蛛侠：崭新之日 <span style="font-size:12px;color:var(--text-muted);">Spider-Man: Brand New Day</span></div>
+        <div class="vibes-movie-meta">Destin Daniel Cretton · 2026 · Superhero / Action</div>
+        <div class="vibes-movie-desc">新的城市、新的身份压力，也是一种重新开始。蜘蛛侠最吸引我的地方一直不是“超能力”，而是他在普通生活和责任之间反复做选择。<br><span style="font-size:12px;color:var(--text-muted);">A new city, a new burden of identity, and a clean restart. What draws me to Spider-Man is not the superpower itself, but the repeated choice between ordinary life and responsibility.</span></div>
       </div>
     </div>
 
-    <!-- 东北警察故事3 -->
+    <!-- 空枪 -->
     <div class="vibes-movie-card reveal">
       <div class="vibes-movie-media">
         <div class="vibes-poster-frame">
-          <img width="734" height="1151" loading="lazy" decoding="async" class="vibes-movie-poster" src="assets/movie-northeast.webp" alt="东北警察故事3">
+          <img width="800" height="1200" loading="lazy" decoding="async" class="vibes-movie-poster" src="assets/movie-emptygun.webp" alt="空枪">
         </div>
       </div>
       <div class="vibes-movie-info">
-        <div class="vibes-movie-title" style="font-family: 'Noto Serif SC', serif;">东北警察故事3 <span style="font-size:12px;color:var(--text-muted);">Northeast Police Story 3</span></div>
-        <div class="vibes-movie-meta">Dongbei Police Story 3 · 2025 · Action / Crime</div>
-        <div class="vibes-movie-desc">硬核东北刑警，拳拳到肉的动作片。延续系列一贯的生猛风格，在黑色幽默与暴力美学之间找到了独特的节奏。不装腔作势，就是纯粹的肾上腺素。<br><span style="font-size:12px;color:var(--text-muted);">Gritty northeast cop action thriller. Continues the franchise's raw, visceral style — finding a unique rhythm between dark humor and brutal choreography. No pretension, just pure adrenaline.</span></div>
+        <div class="vibes-movie-title" style="font-family: 'Noto Serif SC', serif;">空枪</div>
+        <div class="vibes-movie-meta">韩延 · 2026 · Crime / Suspense</div>
+        <div class="vibes-movie-desc">港式犯罪片的壳，讲的是欲望、选择和被局势推着走的人。节奏更偏群像和博弈，适合看人物关系怎么一步步失控。<br><span style="font-size:12px;color:var(--text-muted);">A crime story built around desire, choice, and people pushed by circumstance. The appeal is less about one clean hero line and more about watching relationships and incentives lose control.</span></div>
       </div>
     </div>
   </div>
@@ -515,10 +540,34 @@
         </div>
       </div>
 
+      <!-- 马来西亚 -->
+      <div class="travel-dest reveal">
+        <img width="900" height="1200" loading="lazy" decoding="async" class="travel-dest-photo" src="assets/travel-malaysia.webp" alt="马来西亚海边日落" style="object-position: 50% 43%;">
+        <div class="travel-dest-body">
+          <div class="travel-dest-name">海边日落 · Malaysia Sunset</div>
+          <div class="travel-dest-loc">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            马来西亚 · Malaysia
+          </div>
+        </div>
+      </div>
+
+      <!-- 新加坡 -->
+      <div class="travel-dest reveal reveal-delay-1">
+        <img width="1200" height="900" loading="lazy" decoding="async" class="travel-dest-photo" src="assets/travel-singapore.webp" alt="新加坡鱼尾狮公园" style="object-position: 50% 45%;">
+        <div class="travel-dest-body">
+          <div class="travel-dest-name">鱼尾狮公园 · Merlion Park</div>
+          <div class="travel-dest-loc">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            新加坡 · Singapore
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="travel-poem reveal reveal-delay-1">
-      黔山苗寨的炊烟，川西海子的斑斓，祁连林海的寂静，大理古镇的稻浪——<br>每一程山水，都是写给自己的长信。<br><span style="font-size:12px;color:var(--text-muted);">Smoke rising from Miao stilt houses, the kaleidoscope of Sichuan's alpine lakes, the silence of Qilian's forests, the rice waves of Dali's ancient town — every journey is a long letter written to myself.</span>
+      黔山苗寨的炊烟，川西海子的斑斓，祁连林海的寂静，大理古镇的稻浪，热带海边的日落，城市海湾的风——<br>每一程山水，都是写给自己的长信。<br><span style="font-size:12px;color:var(--text-muted);">Smoke rising from Miao stilt houses, the kaleidoscope of Sichuan's alpine lakes, the silence of Qilian's forests, the rice waves of Dali's ancient town, tropical sunsets, and city-bay wind — every journey is a long letter written to myself.</span>
     </div>
   </div>
 </section>

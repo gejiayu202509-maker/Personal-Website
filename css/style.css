@@ -606,6 +606,15 @@ body::after {
   overflow-wrap: anywhere;
 }
 
+.project-title-en {
+  display: inline-block;
+  margin-left: 6px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
 .project-org {
   font-size: 14px;
   color: var(--primary);
@@ -621,6 +630,17 @@ body::after {
   margin-bottom: 16px;
   flex: 1;
   overflow-wrap: anywhere;
+}
+
+.project-desc p {
+  margin: 0;
+}
+
+.project-desc-en {
+  margin-top: 8px !important;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 
 .project-stat {

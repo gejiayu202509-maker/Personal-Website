@@ -64,8 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (hamburger && mobileNav) {
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileNav.classList.toggle('open');
+      const isOpen = hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
     });
 
     // Close on link click
@@ -73,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       });
     });
   }

@@ -1,0 +1,31 @@
+SCOPED WEBSITE CODE REUSE PERMISSION
+Ge Jiayu - https://gejiayu.top/
+
+Permission is granted to reuse, modify, and redistribute this website's layout,
+styles, interactions, and implementation code for your own websites.
+Source acknowledgement is appreciated but is not a condition of this permission.
+
+SCOPE
+This permission covers implementation structure, CSS, JavaScript, and the local
+source-record tools. It does not license the entire repository as one combined
+work. HTML files may contain both reusable implementation and excluded personal
+content; only the implementation is covered.
+
+EXCLUDED MATERIAL
+No permission is granted by this notice to reuse Ge Jiayu's personal photos,
+custom identity-based illustrations, likeness, biography, personal experiences,
+documents, or project/demo credentials. In particular, assets/hero-bg.webp is
+not a reusable template asset. These materials require separate explicit
+permission. See ASSET-RIGHTS.md. Attribution alone does not grant such permission.
+
+Third-party materials, including film posters, book covers, fonts, and external
+libraries, remain subject to their own terms. This notice grants no additional
+rights to those materials.
+
+The reusable code is provided as is, without warranties. To the extent permitted
+by applicable law, the maintainer is not liable for claims or damages arising
+from its use.
+
+This notice describes the scope of permission granted here. It does not change
+GitHub's applicable terms for viewing or forking a public repository, revoke any
+separately granted permission, or certify ownership of third-party or AI output.

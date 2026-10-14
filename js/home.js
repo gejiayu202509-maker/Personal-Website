@@ -1,3 +1,4 @@
+/* Source: Ge Jiayu / https://gejiayu.top/. Layout reuse permitted; personal imagery excluded. See LICENSE and ASSET-RIGHTS.md. */
 /* ================================================================
    home.js — Cinematic HKU Sunrise Hero interactions
    Image parallax + scroll effects + mobile nav

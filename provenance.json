@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "kind": "unsigned-source-record",
+  "maintainer": "Ge Jiayu",
+  "originalWebsite": "https://gejiayu.top/",
+  "recordedAt": "2026-10-14T07:03:59.705Z",
+  "sourceRevisionAtRecording": "33c421d63b6b0126f1045f1818fce92ccdf4dde0",
+  "algorithm": "sha256",
+  "imageReusePolicy": "https://gejiayu.top/ASSET-RIGHTS.md",
+  "priorVersions": [
+    {
+      "path": "assets/hero-bg.webp",
+      "sha256": "ce55f004a8ce9b1f2428b072f2a3e2e40d338d2f51ec99f84466c45ac8c37928",
+      "gitRevision": "5304d9c4ee8a7f9cdefce88c1d686edd67a54654",
+      "note": "Previously public, unmarked homepage artwork. Existing history is unchanged."
+    }
+  ],
+  "files": [
+    {
+      "path": "assets/hero-bg.webp",
+      "sha256": "46a08a99421252aa0fc17c97e5904a1a5f855da29c43d2d47cba6bb69f4db685",
+      "bytes": 202392
+    },
+    {
+      "path": "index.html",
+      "sha256": "db56b3a251ccf0d8e28097664ab3592f1fd75f141dd603851251d76201f1200d",
+      "bytes": 6212
+    },
+    {
+      "path": "css/home.css",
+      "sha256": "a3b2e46f9ec97c9002ee558589944eae6b5cd61eb98303762dcb4afcfaf4da52",
+      "bytes": 15070
+    },
+    {
+      "path": "css/style.css",
+      "sha256": "b7cd6875f33b3fa3287c01721111538f764aa8facdb6788a7e3c729d2a2ae78e",
+      "bytes": 29608
+    },
+    {
+      "path": "js/home.js",
+      "sha256": "1723fbf1ca29a1011be55aa25988f6957bb2b9a3c4719f3803d12fb62f8b38b7",
+      "bytes": 3210
+    },
+    {
+      "path": "js/main.js",
+      "sha256": "9b1014fb7b1ca8ae632ec6618b3bc982c629a1b2b5d604b135e5cb5145a52d48",
+      "bytes": 7303
+    },
+    {
+      "path": "README.md",
+      "sha256": "37c53562f64bacc8a083b8091e5682e6703801f0e6291a4d55b865f46820cd3f",
+      "bytes": 2865
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "186ce3aa5a3fccee522c7f5312c4c83cea98ee7d2d086eacf7b18297df409804",
+      "bytes": 1604
+    },
+    {
+      "path": "ASSET-RIGHTS.md",
+      "sha256": "aa152828a8f7fee5120f9241651246f26250758018bb590de31301fbc52e7882",
+      "bytes": 1887
+    },
+    {
+      "path": "scripts/provenance.mjs",
+      "sha256": "c357f94ab8027097b326dbf5fbbed56330304fbfcc57270c5e69b9ce0a10b4ef",
+      "bytes": 5569
+    },
+    {
+      "path": "scripts/provenance.test.mjs",
+      "sha256": "980be845f3d76e2b72713c821551b68b0b052f910008f0a39b5245537aa58a6f",
+      "bytes": 2921
+    }
+  ]
+}

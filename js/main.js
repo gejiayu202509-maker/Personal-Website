@@ -1,3 +1,4 @@
+/* Source: Ge Jiayu / https://gejiayu.top/. Layout reuse permitted; personal imagery excluded. See LICENSE and ASSET-RIGHTS.md. */
 /* ========== main.js — Cinematic page transition system ========== */
 
 // ---- 1. Preload all background images immediately ----

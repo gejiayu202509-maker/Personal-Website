@@ -3,8 +3,8 @@
   "kind": "unsigned-source-record",
   "maintainer": "Ge Jiayu",
   "originalWebsite": "https://gejiayu.top/",
-  "recordedAt": "2026-10-16T06:21:23.127Z",
-  "sourceRevisionAtRecording": "200be129c43b51e91088e62bee007a1d4feb4234",
+  "recordedAt": "2026-10-16T06:40:20.640Z",
+  "sourceRevisionAtRecording": "b94bac24632a768ced796dfba42fd9b810388329",
   "algorithm": "sha256",
   "imageReusePolicy": "https://gejiayu.top/ASSET-RIGHTS.md",
   "priorVersions": [
@@ -38,8 +38,8 @@
     },
     {
       "path": "css/style.css",
-      "sha256": "b7cd6875f33b3fa3287c01721111538f764aa8facdb6788a7e3c729d2a2ae78e",
-      "bytes": 29608
+      "sha256": "f90f0f0fbe1f8b721ccaf94b0f37dc972cadfa645d0dbe06e6a2dc8a09d8e4d7",
+      "bytes": 30102
     },
     {
       "path": "js/home.js",

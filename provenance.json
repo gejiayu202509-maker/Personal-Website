@@ -3,8 +3,8 @@
   "kind": "unsigned-source-record",
   "maintainer": "Ge Jiayu",
   "originalWebsite": "https://gejiayu.top/",
-  "recordedAt": "2026-10-14T07:03:59.705Z",
-  "sourceRevisionAtRecording": "33c421d63b6b0126f1045f1818fce92ccdf4dde0",
+  "recordedAt": "2026-10-16T06:21:23.127Z",
+  "sourceRevisionAtRecording": "200be129c43b51e91088e62bee007a1d4feb4234",
   "algorithm": "sha256",
   "imageReusePolicy": "https://gejiayu.top/ASSET-RIGHTS.md",
   "priorVersions": [
@@ -22,14 +22,19 @@
       "bytes": 202392
     },
     {
+      "path": "assets/hero-bg-mobile.webp",
+      "sha256": "56219eeeb0e491ed2d4165ba60e0d2d5e78ee785b4cde2632794e084cfb9c9fa",
+      "bytes": 181176
+    },
+    {
       "path": "index.html",
-      "sha256": "db56b3a251ccf0d8e28097664ab3592f1fd75f141dd603851251d76201f1200d",
-      "bytes": 6212
+      "sha256": "134efe501f6e91f4f331d24a713f5559d0853878bc52b5223b9fcdc7c92f5bbf",
+      "bytes": 6486
     },
     {
       "path": "css/home.css",
-      "sha256": "a3b2e46f9ec97c9002ee558589944eae6b5cd61eb98303762dcb4afcfaf4da52",
-      "bytes": 15070
+      "sha256": "5b7f848d2b23ab4a2bb99e93ecc1ff0709d20e87984d21481dc9c7cf615086d1",
+      "bytes": 15950
     },
     {
       "path": "css/style.css",
@@ -38,33 +43,33 @@
     },
     {
       "path": "js/home.js",
-      "sha256": "1723fbf1ca29a1011be55aa25988f6957bb2b9a3c4719f3803d12fb62f8b38b7",
-      "bytes": 3210
+      "sha256": "67e08958a7054be36bb06c58e206e3ba61baff6ffc904d570b59ffcc79820c3c",
+      "bytes": 3555
     },
     {
       "path": "js/main.js",
-      "sha256": "9b1014fb7b1ca8ae632ec6618b3bc982c629a1b2b5d604b135e5cb5145a52d48",
-      "bytes": 7303
+      "sha256": "18e5c7f76247ef1c75330d3c57e4b9b09447753443577c1cb41b444b9ce264a3",
+      "bytes": 7355
     },
     {
       "path": "README.md",
-      "sha256": "37c53562f64bacc8a083b8091e5682e6703801f0e6291a4d55b865f46820cd3f",
-      "bytes": 2865
+      "sha256": "119b093f90057a2904b1733fd2eb078610c92f9f653ae3170eb3f47ca65053e7",
+      "bytes": 3219
     },
     {
       "path": "LICENSE",
-      "sha256": "186ce3aa5a3fccee522c7f5312c4c83cea98ee7d2d086eacf7b18297df409804",
-      "bytes": 1604
+      "sha256": "f879ecabda799c6901f5bd462664a5d629a13e2cf445b47e444dedac833d79f1",
+      "bytes": 1668
     },
     {
       "path": "ASSET-RIGHTS.md",
-      "sha256": "aa152828a8f7fee5120f9241651246f26250758018bb590de31301fbc52e7882",
-      "bytes": 1887
+      "sha256": "d19b9f76b9336f0ecfebeabe2c4d364d71242920de4b52fa58c806c362e6cee4",
+      "bytes": 1942
     },
     {
       "path": "scripts/provenance.mjs",
-      "sha256": "c357f94ab8027097b326dbf5fbbed56330304fbfcc57270c5e69b9ce0a10b4ef",
-      "bytes": 5569
+      "sha256": "3dd75679815943559b06a1aa1b49ceb3765e0d33f67da36e504e1b5654457ed1",
+      "bytes": 5599
     },
     {
       "path": "scripts/provenance.test.mjs",

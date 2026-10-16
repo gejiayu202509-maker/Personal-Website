@@ -44,16 +44,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/home.css">
-  <link rel="preload" as="image" href="assets/hero-bg.webp"></head>
+  <link rel="preload" as="image" href="assets/hero-bg.webp" media="(orientation: landscape)">
+  <link rel="preload" as="image" href="assets/hero-bg-mobile.webp" media="(orientation: portrait)">
+</head>
 <body class="home-body">
 
 <!-- ==================== HERO IMAGE BACKGROUND ==================== -->
 <div class="hero-bg-layer" id="heroBgLayer">
   <!-- Personal AI-assisted illustration: not included in layout/code reuse permission. -->
-  <img width="1536" height="1024" fetchpriority="high" decoding="async" class="hero-bg-img"
-    src="assets/hero-bg.webp"
-    alt="为葛家羽定制的港大日出人物插画"
-    id="heroBgImg"/>
+  <picture>
+    <source media="(orientation: portrait)" srcset="assets/hero-bg-mobile.webp" width="792" height="1290">
+    <img width="1536" height="1024" fetchpriority="high" decoding="async" class="hero-bg-img"
+      src="assets/hero-bg.webp"
+      alt="为葛家羽定制的港大日出人物插画"
+      id="heroBgImg"/>
+  </picture>
 
   <!-- Atmospheric overlays -->
   <div class="bg-overlay-dark"></div>

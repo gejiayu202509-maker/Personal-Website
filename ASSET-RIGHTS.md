@@ -6,9 +6,10 @@ Original website: https://gejiayu.top/
 
 ## Homepage artwork
 
-`assets/hero-bg.webp` is an AI-assisted custom illustration created for Ge Jiayu's
-personal homepage and based on his appearance. It is not a documentary photo or
-a generic background supplied with a reusable website template.
+`assets/hero-bg.webp` and its portrait adaptation `assets/hero-bg-mobile.webp`
+are AI-assisted custom illustrations created for Ge Jiayu's personal homepage
+and based on his appearance. Neither is a documentary photo or a generic
+background supplied with a reusable website template.
 
 Ge Jiayu does **not** grant permission to copy, republish, adapt, crop, or use this
 artwork as another person's website imagery without his explicit permission.
@@ -29,8 +30,8 @@ to third-party media or the other personal photos.
 
 ## What the source markers do
 
-The homepage artwork includes a small visible signature in its pixels and XMP
-metadata identifying Ge Jiayu and the original website. The image fingerprint
+Both homepage images include a small visible signature in their pixels and XMP
+metadata identifying Ge Jiayu and the original website. Their fingerprints
 and an earlier public asset fingerprint are recorded in `provenance.json`.
 
 These are source indications, not access control, a digital signature, a C2PA

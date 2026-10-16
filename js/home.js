@@ -15,12 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentX = 0, currentY = 0;
     const lerpFactor = 0.045; // smooth follow
     const maxOffset = 18; // px movement
+    const pointerMotion = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (orientation: landscape)');
 
     document.addEventListener('mousemove', (e) => {
+      if (!pointerMotion.matches) return;
       const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
       targetX = ((e.clientX - cx) / cx) * maxOffset;
       targetY = ((e.clientY - cy) / cy) * maxOffset * 0.6; // less vertical
+    });
+
+    pointerMotion.addEventListener('change', () => {
+      targetX = targetY = currentX = currentY = 0;
+      bgImg.style.transform = '';
     });
 
     let parallaxRunning = true;

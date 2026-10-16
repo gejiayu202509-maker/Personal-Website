@@ -6,7 +6,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const FILES = Object.freeze([
-  'assets/hero-bg.webp', 'index.html', 'css/home.css', 'css/style.css',
+  'assets/hero-bg.webp', 'assets/hero-bg-mobile.webp', 'index.html', 'css/home.css', 'css/style.css',
   'js/home.js', 'js/main.js', 'README.md', 'LICENSE', 'ASSET-RIGHTS.md',
   'scripts/provenance.mjs', 'scripts/provenance.test.mjs',
 ]);

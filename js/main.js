@@ -3,7 +3,8 @@
 
 // ---- 1. Preload all background images immediately ----
 (function preloadBgs() {
-  const bgImages = ['assets/inner-bg.webp', 'assets/hero-bg.webp'];
+  // Home selects and preloads its landscape/portrait image in index.html.
+  const bgImages = ['assets/inner-bg.webp'];
   bgImages.forEach(src => {
     const img = new Image();
     img.src = src;

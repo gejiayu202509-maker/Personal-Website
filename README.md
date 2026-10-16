@@ -17,9 +17,10 @@ An acknowledgement is not a condition of the code reuse permission. See
 [LICENSE](LICENSE) for the scope of that permission.
 
 This permission does **not** include the site's personal content or images.
-In particular, `assets/hero-bg.webp` is a custom AI-assisted illustration based
-on Ge Jiayu's appearance. It is not a generic template background and is not
-licensed for reuse, even with attribution. Replace it with your own imagery.
+In particular, `assets/hero-bg.webp` and its portrait adaptation
+`assets/hero-bg-mobile.webp` are custom AI-assisted illustrations based
+on Ge Jiayu's appearance. They are not generic template backgrounds and are not
+licensed for reuse, even with attribution. Replace them with your own imagery.
 See [ASSET-RIGHTS.md](ASSET-RIGHTS.md).
 
 If adapting this site, also replace the biography, personal photos, project
@@ -28,7 +29,7 @@ previews. Do not present Ge Jiayu's identity or experiences as your own.
 
 ## Source records
 
-The homepage image has a subtle pixel-level source signature and ordinary XMP
+Both homepage images have a subtle pixel-level source signature and ordinary XMP
 metadata describing its source and reuse policy. The HTML and main CSS/JS files
 also identify the original website. These markers can be removed; they are not
 DRM, tracking, or a guarantee against copying.
@@ -69,6 +70,11 @@ Run the focused tests:
 ```bash
 node --test scripts/provenance.test.mjs
 ```
+
+The homepage uses the landscape illustration on landscape screens and a
+dedicated portrait composition on portrait screens, selected by `<picture>`.
+Matching preload media queries avoid downloading both hero images on initial
+load; rotating a device can load the other version as needed.
 
 The site is static HTML/CSS/JavaScript and uses GitHub Pages. The source-record
 tool requires Node.js but no additional packages. It is not loaded by visitors'
